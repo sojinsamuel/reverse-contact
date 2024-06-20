@@ -1,0 +1,151 @@
+{
+  "success": true,
+  "email": "sojinsamuel2001@gmail.com",
+  "emailType": "personal",
+  "person": {
+    "publicIdentifier": "sojin-samuel",
+    "linkedInIdentifier": "ACoAADVDzfgB2Sxwgao16qVsz2OmpKBL69PQtzU",
+    "linkedInUrl": "https://www.linkedin.com/in/ACoAADVDzfgB2Sxwgao16qVsz2OmpKBL69PQtzU",
+    "firstName": "Sojin",
+    "lastName": "Samuel",
+    "headline": "React Developer | Building Telegram & Twitter Bots",
+    "location": "Kerala, India",
+    "summary": "Hello, my name is Sojin Samuel and I am a JavaScript developer with a focus on front-end libraries such as React and Vue. I am passionate about web accessibility and have been actively contributing to an open-source project called roadmap.sh, which provides comprehensive learning roadmaps and resource links for developers.\n\nI have several notable projects such as an AI-powered Twitter bot that utilizes OpenAI technology to search for tweets with specific keywords, generate comments, and post them automatically. I have also created a Chrome Extension to extract keywords from Youtube videos using the Youtube API and a web application that generates content based on a user-specified query.\n\nI am a winner of Hacktoberfest 2022, an international event that encourages people to contribute to open-source software, and I have achieved the Golden Badge in DevElevate 2022, organized by Showwcase Developer Community.\n\nI hold a Bachelor of Computer Application from the University of Mahatma Gandhi and am skilled in HTML, CSS, JavaScript, Nodejs, React, Vue, Tailwind CSS, Bootstrap, and Git.\n\nYou can contact me through my email at sojinsamuel2001@gmail.com and find me on Github at github.com/sojinsamuel.\n\nMy techs: React | JavaScript | Nodejs | Service Workers | HTML5 | CSS3 | Tailwind | Bootstrap | Git | Cloudflare",
+    "photoUrl": "https://media.licdn.com/dms/image/D5603AQEozvwCCB6MIw/profile-displayphoto-shrink_800_800/0/1690549499875?e=1724284800&v=beta&t=DJV5C6q_Sr_h2W-C3KvRLIbCwzAX6ASK-VbgzDB3cCY",
+    "creationDate": {
+      "month": 4,
+      "year": 2021
+    },
+    "followerCount": 555,
+    "positions": {
+      "positionsCount": 3,
+      "positionHistory": [
+        {
+          "title": "React Developer",
+          "companyName": "INNOTEK KFT.",
+          "companyLocation": "Hungary · Remote",
+          "description": "Skills: React.js · GraphQL · Strapi · Node.js · Tailwind CSS · Next.js · Airtable",
+          "startEndDate": {
+            "start": {
+              "month": 6,
+              "year": 2023
+            },
+            "end": null
+          },
+          "contractType": "Full-time",
+          "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQFIz5V0b3Cjjg/company-logo_400_400/0/1675524295580/innotek_kft_logo?e=1726704000&v=beta&t=iV90eytjW8wIwpT23dXTP1tyz62YXloVZVXoZkyqb2A",
+          "linkedInUrl": "https://www.linkedin.com/company/79909877/",
+          "linkedInId": "79909877"
+        },
+        {
+          "title": "Javascript Developer",
+          "companyName": "Shiply",
+          "companyLocation": "United Kingdom · Remote",
+          "description": "Skills: Ghost Themes · JavaScript · Node.js · Tailwind CSS · Vue.js · Cloudflare",
+          "startEndDate": {
+            "start": {
+              "month": 4,
+              "year": 2023
+            },
+            "end": {
+              "month": 6,
+              "year": 2023
+            }
+          },
+          "contractType": "Full-time",
+          "companyLogo": "https://media.licdn.com/dms/image/C560BAQGxR9ttbR5xdQ/company-logo_400_400/0/1631385060795?e=1726704000&v=beta&t=yd-x4RDOJvPD1al6b95MshJIf5FNYjRgUap_3Wsg2nc",
+          "linkedInUrl": "https://www.linkedin.com/company/922498/",
+          "linkedInId": "922498"
+        },
+        {
+          "title": "Full Stack Engineer",
+          "companyName": "Freelance",
+          "companyLocation": "India",
+          "description": "Skills: HTML · React.js · JavaScript · Node.js · Software Development · Next.js · Search Engine Optimization (SEO) · Microsoft Visual Studio Code · Cloudflare · Airtable · Cascading Style Sheets (CSS)",
+          "startEndDate": {
+            "start": {
+              "month": 3,
+              "year": 2019
+            },
+            "end": {
+              "month": 6,
+              "year": 2023
+            }
+          },
+          "companyLogo": null,
+          "linkedInUrl": "https://www.linkedin.com/search/results/all/?keywords=Freelance"
+        }
+      ]
+    },
+    "schools": {
+      "educationsCount": 1,
+      "educationHistory": [
+        {
+          "degreeName": "BCA, Computer Science",
+          "fieldOfStudy": "BCA, Computer Science",
+          "description": "Skills: Front-End Development · HTML",
+          "linkedInUrl": "https://www.linkedin.com/company/2390820/",
+          "schoolLogo": "https://media.licdn.com/dms/image/C4D0BAQG3p_IGzndqEw/company-logo_400_400/0/1631347441728?e=1726704000&v=beta&t=XY76bOlAQfM2o07TxgR67HDeMz9_qJXGG2DK9fg9UUc",
+          "schoolName": "Mahatma Gandhi University",
+          "startEndDate": {
+            "start": {
+              "month": 4,
+              "year": 2019
+            },
+            "end": {
+              "month": 4,
+              "year": 2022
+            }
+          }
+        }
+      ]
+    },
+    "skills": [
+      "Tailwind CSS",
+      "GraphQL",
+      "Strapi",
+      "Ghost Themes",
+      "Vue.js",
+      "Java",
+      "Cloudflare",
+      "Airtable",
+      "Next.js",
+      "Node.js",
+      "Software Development",
+      "React.js",
+      "Front-End Development",
+      "Cascading Style Sheets (CSS)",
+      "Microsoft Visual Studio Code",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Search Engine Optimization (SEO)"
+    ],
+    "languages": ["English"]
+  },
+  "company": {
+    "linkedInId": "79909877",
+    "name": "INNOTEK KFT.",
+    "universalName": "innotek-kft",
+    "linkedInUrl": "https://www.linkedin.com/company/79909877",
+    "employeeCount": 2,
+    "websiteUrl": "https://innotek.dev/",
+    "tagline": "Simplifying Tech, Amplifying Success.",
+    "description": "Innotek KFT is a boutique software development firm with expertise in SaaS solutions, desktop applications, and browser plugin development.",
+    "industry": "IT Services and IT Consulting",
+    "phone": null,
+    "specialities": [],
+    "headquarter": {
+      "city": "Zákányszék",
+      "country": "HU",
+      "postalCode": null,
+      "geographicArea": null
+    },
+    "logo": "https://media.licdn.com/dms/image/C4D0BAQFIz5V0b3Cjjg/company-logo_400_400/0/1675524295580/innotek_kft_logo?e=1726704000&v=beta&t=iV90eytjW8wIwpT23dXTP1tyz62YXloVZVXoZkyqb2A",
+    "foundedOn": {
+      "year": 2021
+    }
+  },
+  "credits_left": 2012,
+  "rate_limit_left": 1999
+}
