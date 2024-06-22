@@ -24,6 +24,10 @@ import {
   PutCommand,
   GetCommand,
 } from "@/aws/dynamodb/DynamoDBClient";
+import analytics from "@/lib/analyticsInstance";
+import { v4 as uuidv4 } from "uuid";
+import PhoneDetails from "./ui/user/phone-lookup";
+
 // system message for reverse contact lookup
 const content = `
   YOu are a reverse contact lookup assistant. 
@@ -34,6 +38,8 @@ const content = `
   if the user wants to find information about a person using their profile link, call the \`get_details_with_profile_link\` to show the user the information.
   if the user wants to send an email to a person, call the \`send_email\` to send the email to the person.
   if the user wants to send an sms to a person, call the \`send_sms\` to send the sms to the person.
+  if the user wants to find information about a person using their phone number, call the \`get_phone_details\` to show the user the information.
+  if the user wants to make a call to a person, call the \`make_call\` to make the call to the person.
   
   - Use markdown to format the text in a better way for the user to understand. add new line after each sentence.
 
@@ -49,6 +55,8 @@ const failedMessage = (
     </Link>
   </p>
 );
+
+// const { userId } = auth();
 
 export const sendMessage = async (
   message: string
@@ -82,6 +90,10 @@ export const sendMessage = async (
         if (done) {
           history.done([...history.get(), { role: "assistant", content }]);
         }
+        analytics.track({
+          anonymousId: uuidv4(),
+          event: "Assistant Replied with Message",
+        });
         return <Markdown options={{ wrapper: "article" }}>{content}</Markdown>;
       },
       temperature: 0,
@@ -148,6 +160,10 @@ export const sendMessage = async (
             console.log("profile_link", profile_link);
             yield <p>Loading...</p>;
             const details = await getDetailsWithProfileLink(profile_link);
+            analytics.track({
+              userId: uuidv4(),
+              event: "Requested Profile Details",
+            });
             if (!details) {
               history.done([
                 ...history.get(),
@@ -163,7 +179,6 @@ export const sendMessage = async (
               ]);
               return failedMessage;
             }
-            await sleep(1000);
             history.done([
               ...history.get(),
               {
@@ -209,6 +224,92 @@ export const sendMessage = async (
             return <ContactBySms phoneNumber={phone} message={message} />;
           },
         },
+        get_phone_details: {
+          description:
+            "Get details from the given phone number if the user requests.",
+          parameters: z.object({
+            phone: z
+              .string()
+              .describe(
+                "Phone number to lookup. make sure to include the country code. eg: +14159929960 for US."
+              ),
+          }),
+          generate: async function* ({ phone }) {
+            yield <p>Loading...</p>;
+            const details = await getDetailsWithPhone(phone);
+            if (!details) {
+              history.done([
+                ...history.get(),
+                {
+                  role: "assistant",
+                  name: "get_phone_details",
+                  content: `Error occured for ${phone} try again: \n ${JSON.stringify(
+                    details,
+                    null,
+                    2
+                  )}`,
+                },
+              ]);
+              return failedMessage;
+            }
+            history.done([
+              ...history.get(),
+              {
+                role: "assistant",
+                name: "get_phone_details",
+                content: `Details of ${phone} is: \n ${JSON.stringify(
+                  details,
+                  null,
+                  2
+                )}`,
+              },
+            ]);
+            return <PhoneDetails details={details} />;
+          },
+        },
+        make_call: {
+          description: "Make a call to the given phone number.",
+          parameters: z.object({
+            phone: z
+              .string()
+              .describe(
+                "Phone number to call. make sure to include the country code. eg: +14159929960 for US."
+              ),
+            message: z.string().describe("Message to say in the call."),
+          }),
+          generate: async function* ({ phone, message }) {
+            yield <p>Loading...</p>;
+            const details = await makeCall(phone, message);
+            if (!details) {
+              history.done([
+                ...history.get(),
+                {
+                  role: "assistant",
+                  name: "make_call",
+                  content: `Error occured for ${phone} try again: \n ${JSON.stringify(
+                    details,
+                    null,
+                    2
+                  )}`,
+                },
+              ]);
+              return failedMessage;
+            }
+            history.done([
+              ...history.get(),
+              {
+                role: "assistant",
+                name: "make_call",
+                content: `Call made to ${phone} with message: ${message}`,
+              },
+            ]);
+            return (
+              <p>
+                Call made to {phone} with message: {message}
+              </p>
+            );
+          },
+        },
       },
     });
     return {
@@ -231,7 +332,9 @@ export type AIState = Array<{
     | "get_details_with_email"
     | "get_details_with_profile_link"
     | "send_email"
-    | "send_sms";
+    | "send_sms"
+    | "get_phone_details"
+    | "make_call";
   role: "user" | "assistant" | "system";
   content: string;
 }>;
@@ -270,6 +373,11 @@ export async function sendEmail(form: FormDataI) {
   console.log("form", form);
   sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
+  analytics.track({
+    userId: uuidv4(),
+    event: "Email Sent",
+  });
+
   const myPrompt = `
   For the given markup, design a very beautiful email template using html and inline styles. 
   Make sure it looks very good and have a good aesthetic design.
@@ -306,15 +414,21 @@ export async function sendEmail(form: FormDataI) {
   }
 }
 
+const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
+
 export async function sendSms(
   phone: string,
   message: string
 ): Promise<boolean> {
-  const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
+  analytics.track({
+    userId: uuidv4(),
+    event: "Sms Sent",
+  });
+
   try {
     const res = await client.messages.create({
       body: message,
-      from: "MG7e55a5f84a9375efa8a51d19f3852844",
+      from: process.env.TWILIO_FROM_PHONE_NUMBER!,
       to: phone,
     });
     console.log(res);
@@ -324,6 +438,14 @@ export async function sendSms(
     throw error;
     return false;
   }
+}
+
+export async function getDetailsWithPhone(phone: string) {
+  const details = await client.lookups.v2
+    .phoneNumbers(phone)
+    .fetch({ fields: "line_type_intelligence" });
+  console.log(details);
+  return details;
 }
 
 export async function createRecord(email: string, id: string) {
@@ -359,5 +481,29 @@ export async function getRecord(key: string) {
   } catch (error) {
     console.error(error);
     return null;
+  }
+}
+
+export async function makeCall(phone: string, message: string) {
+  analytics.track({
+    anonymousId: uuidv4(),
+    event: "Call Made",
+  });
+
+  console.log("phone", message);
+
+  try {
+    const res = await client.calls.create({
+      twiml: `<Response><Say voice="Polly.Amy">Hi Alan, this is a message from Sam. 
+      We should hire Brian Armstrong because he is the Co-founder and CEO at Coinbase, has extensive experience in technical product management, and has a strong background in computer science. 
+      Please check the rest from the email I sent. Thank you.</Say></Response>`,
+      to: phone,
+      from: process.env.TWILIO_FROM_PHONE_NUMBER!,
+    });
+    console.log(res);
+    return true;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 }

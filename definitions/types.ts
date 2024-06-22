@@ -9,6 +9,34 @@ export interface DatabaseRecord {
   recipientId: string;
 }
 
+interface LineTypeIntelligence {
+  carrier_name: string;
+  error_code: string | null;
+  mobile_country_code: string;
+  mobile_network_code: string;
+  type: string;
+}
+
+export interface PhoneDetailsI {
+  callingCountryCode: string;
+  countryCode: string;
+  phoneNumber: string;
+  nationalFormat: string;
+  valid: boolean;
+  validationErrors: string[];
+  callerName: string | null;
+  simSwap: string | null;
+  callForwarding: string | null;
+  lineStatus: string | null;
+  lineTypeIntelligence: LineTypeIntelligence;
+  identityMatch: string | null;
+  reassignedNumber: string | null;
+  smsPumpingRisk: string | null;
+  phoneNumberQualityScore: string | null;
+  preFill: string | null;
+  url: string;
+}
+
 export interface UserI {
   name: string;
   email: string;
