@@ -7,8 +7,8 @@ export default function ProtectedLayout({
 }>) {
   return (
     <div className="flex space-x-5  ">
-      <SidebarMain />
-      <div className="ring-2  p-5 w-full">{children}</div>
+      {/* <SidebarMain /> */}
+      <div className=" p-5 w-full">{children}</div>
     </div>
   );
 }

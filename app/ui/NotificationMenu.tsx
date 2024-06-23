@@ -42,7 +42,7 @@ const NotificationMenu = () => {
         </KnockProvider>
       ) : (
         <Icon
-          className="text-default-500 ring-1 "
+          className="text-default-500  "
           icon="solar:bell-linear"
           width={22}
           color="black"

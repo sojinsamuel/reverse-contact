@@ -494,9 +494,7 @@ export async function makeCall(phone: string, message: string) {
 
   try {
     const res = await client.calls.create({
-      twiml: `<Response><Say voice="Polly.Amy">Hi Alan, this is a message from Sam. 
-      We should hire Brian Armstrong because he is the Co-founder and CEO at Coinbase, has extensive experience in technical product management, and has a strong background in computer science. 
-      Please check the rest from the email I sent. Thank you.</Say></Response>`,
+      twiml: `<Response><Say voice="Polly.Amy">${message}</Say></Response>`,
       to: phone,
       from: process.env.TWILIO_FROM_PHONE_NUMBER!,
     });
