@@ -2,7 +2,6 @@ import "@/styles/home.css";
 
 import { Image } from "@nextui-org/react";
 import UnderLine from "@/app/ui/underline";
-import InputField from "@/app/ui/input-field";
 
 export default function Home() {
   return (
@@ -19,19 +18,16 @@ export default function Home() {
             </span>
           </h1>
           <p className="mt-6 text-lg">
-            Gather real-time data and background information on businesses and
-            individuals.
+            Gather real-time details from linkedin to hire the best talent for
+            your company.
           </p>
-          {/* <div className="flex justify-center items-center mt-8">
-            <InputField />
-          </div> */}
         </div>
         <div className="flex flex-col justify-center ">
           <Image
             width={800}
             height={800}
-            src="./components.svg"
-            alt="Clerk embeddable components"
+            src="./hero.png"
+            alt="Chatbot illustration for Reverse Contact"
             loading="lazy"
             className="object-contain"
           />

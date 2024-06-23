@@ -43,20 +43,17 @@ export default function NavigationBar(props: NavbarProps) {
         base: cn("border-default-100", {
           "bg-default-200/50 dark:bg-default-100/50": isMenuOpen,
         }),
-        wrapper: "w-full justify-center bg-transparent",
+        wrapper: " w-full justify-start items-center bg-transparent",
         item: "hidden md:flex",
       }}
       height="60px"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
-      {/* <NavbarMenuToggle className="text-default-400 md:hidden" /> */}
-
       <NavbarBrand>
-        <div className="rounded-full bg-blue-400 text-background">
-          <AcmeIcon size={34} />
-        </div>
-        <span className="ml-2 font-medium">Reverse Contact</span>
+        <Link href="/">
+          <span className="ml-2 font-medium">Reverse Contact</span>
+        </Link>
       </NavbarBrand>
 
       <NavbarContent justify="end">

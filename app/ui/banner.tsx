@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Banner() {
   const pathname = usePathname();
   const currentPath = pathname.split("/")?.[1];
-  if (currentPath !== "home") return null;
+  if (currentPath === "/chatbot") return null;
   return (
     <div className="flex w-full items-center gap-x-3 border-b-1 border-divider bg-gradient-to-r from-default-100 via-primary-100 to-secondary-100 px-6 py-2 sm:px-3.5 sm:before:flex-1">
       <p className="text-small text-foreground">

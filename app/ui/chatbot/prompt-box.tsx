@@ -65,7 +65,7 @@ export default function PromptBox({ setMessages }: { setMessages: any }) {
           classNames={{
             inputWrapper: "!bg-transparent shadow-none",
             innerWrapper: "relative",
-            input: "pt-1 pl-2 pb-6 !pr-10 text-medium",
+            input: "pt-1 pl-2 pb-10 !pr-10 text-medium",
           }}
           endContent={
             <div className="flex items-end gap-2">
