@@ -36,7 +36,7 @@ export default function Banner() {
         }}
         variant="bordered"
       >
-        Read the blog
+        Check Video Demo
       </Button>
       <div className="flex flex-1 justify-end invisible ">
         <Button
