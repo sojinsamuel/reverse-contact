@@ -2,7 +2,6 @@ import React from "react";
 import Dashboardclient from "@/app/ui/dashboard/user-client";
 import Dashboardserver from "@/app/ui/dashboard/user-server";
 import { redirect } from "next/navigation";
-import JsonViewer from "@/app/ui/json-view";
 import Profile from "@/app/ui/user/profile";
 import data from "@/lib/data.json";
 import ContactByEmail from "@/app/ui/user/email";
