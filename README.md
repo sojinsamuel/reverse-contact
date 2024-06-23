@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reverse Contact AI Agent
 
-## Getting Started
+This project is a submission for the [Twilio Challenge](https://dev.to/challenges/twilio).
 
-First, run the development server:
+## What I Built
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The Reverse Contact AI Agent is a robust tool designed to enhance recruitment processes by fetching candidate details from an email or LinkedIn profile URL. Users can share this information with partners or co-founders via various channels:
+
+- [Twilio Call](https://www.twilio.com/docs/voice/make-calls)
+- [SMS](https://www.twilio.com/en-us/messaging/channels/sms)
+- [Email](https://app.sendgrid.com/)
+
+Additionally, by inputting a candidate's phone number, the agent can use the [Twilio Phone Lookup service](https://help.twilio.com/articles/15515453000859) to verify phone number details and availability.
+
+The agent enhances user interaction by displaying real-time notifications. For example, when a recipient opens an email, the AI Agent dashboard immediately alerts the user.
+
+Example Notification:
+
+```
+Hey sojinsamue2001@gmail.com just opened their mail.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User data events such as signup, login, message exchanges, and page visits are meticulously tracked using [Twilio Segment](https://segment.com/).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Experience the functionality of the Reverse Contact AI Agent through the links below:
 
-## Learn More
+- [Live Project](https://reversecontact.vercel.app)
+- Demo Video: {% youtube O8hQnAyhUB4 %}
 
-To learn more about Next.js, take a look at the following resources:
+## Twilio and AI
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project integrates the [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction) with GPT-4 to render React components. These components interact with the Twilio SDK to send messages via SMS, email, and voice calls. This setup allows for the execution of actions using natural language, leveraging the combined power of Twilio's services and advanced AI.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[View the Source Code on GitHub](https://github.com/sojinsamuel/reverse-contact)
 
-## Deploy on Vercel
+## Additional Prize Categories
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This submission qualifies for the following categories in the Twilio Challenge:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Twilio Times Two**: Utilizes multiple Twilio services including Segment, Phone Lookup, SMS, Programmable Voice, and SendGrid for dynamic email template generation.
+- **Impactful Innovators**: Streamlines networking and recruitment by fetching detailed contact information with just an email address.
+- **Entertaining Endeavors**: Enhances user engagement with real-time notifications for critical recruitment activities.
+
+The implementation of Twilio's SendGrid Webhook to handle event notifications is managed through another component of this project, available at [this GitHub repository](https://github.com/sojinsamuel/email-webhook). This setup passes webhook events to the frontend, ensuring seamless communication across various channels.
