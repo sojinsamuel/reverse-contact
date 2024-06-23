@@ -27,7 +27,8 @@ export default function Banner() {
             width={16}
           />
         }
-        href="#"
+        target="_blank"
+        href="https://dev.to/sojinsamuel/networking-cant-be-easier-than-this-4fdm"
         style={{
           border: "solid 2px transparent",
           backgroundImage: `linear-gradient(hsl(var(--nextui-danger-50)), hsl(var(--nextui-danger-50))), linear-gradient(to right, #F871A0, #9353D3)`,
